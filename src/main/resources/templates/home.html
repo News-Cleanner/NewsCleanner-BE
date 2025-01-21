@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .input-section {
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Cleanner</h1>
+        <p>가짜 뉴스를 판독해드립니다.</p>
+    </header>
+
+    <main>
+        <h1>아래에 뉴스 기사나 헤드라인을 붙여넣어 진위 여부를 확인하세요.</h1>
+
+        <div class="input-section">
+            <textarea id="newsInput" placeholder="뉴스 기사나 헤드라인을 붙여넣어주세요"></textarea>
+            <button onclick="analyzeNews()">진위 확인하기</button>
+        </div>
+
+        <div id="resultSection" class="result-section" style="display: none;">
+            <h3>Result</h3>
+            <p id="resultMessage" class="loading">Analyzing...</p>
+        </div>
+    </main>
+
+    <script>
+        function analyzeNews() {
+            const resultSection = document.getElementById('resultSection');
+            const resultMessage = document.getElementById('resultMessage');
+            const newsInput = document.getElementById('newsInput').value;
+
+            if (!newsInput.trim()) {
+                alert('Please enter some text to analyze!');
+                return;
+            }
+
+            // Simulate loading state
+            resultSection.style.display = 'block';
+            resultMessage.textContent = 'Analyzing...';
+
+            // Simulate API call
+            setTimeout(() => {
+                const isFake = Math.random() > 0.5; // Mock result
+                if (isFake) {
+                    resultMessage.textContent = 'This article is likely fake. Please verify the source.';
+                } else {
+                    resultMessage.textContent = 'This article seems authentic. Still, cross-check the facts.';
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
