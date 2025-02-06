@@ -21,6 +21,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Builder
 public class User {
 	
@@ -35,7 +36,9 @@ public class User {
 	@Column(length = 50)
 	private String password;
 	
-	User(int user_id){
-		this.user_id=user_id;
+	public User(String email, String password) {
+		this.email=email;
+		this.password=password;
 	}
+
 }
