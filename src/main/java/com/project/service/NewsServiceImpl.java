@@ -20,5 +20,7 @@ public class NewsServiceImpl implements NewsService {
 		News saveNews = newsRep.save(news);
 		return saveNews;
 	}
+	
+	
 
 }

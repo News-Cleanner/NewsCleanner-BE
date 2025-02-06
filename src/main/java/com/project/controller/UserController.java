@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import com.project.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,5 +41,35 @@ public class UserController {
 		
 		return map;
 	}
+	
+	/**
+	 * 로그인하기
+	 * @params : email, pw
+	 * 
+	 * */
+	@PostMapping("/login")
+	@Operation(summary = "로그인", description = "사용자 로그인할때 사용된다.")
+	public Object signIn(@RequestBody User user, HttpSession session) {
+		
+		
+		User dbUser = userService.signIn(user);
+		
+		
+		//HttpSession에 정보를 저장한다.
+		dbUser.setPassword(null);
+
+		session.setAttribute("loginUser", dbUser);
+		
+		//보내줄 유저정보 다시 세팅
+		HashMap<String, Object> users = new LinkedHashMap<String, Object>();
+		users.put("userSeq", dbUser.getUser_id());
+
+		//response할 객체 생성
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("user", users);
+		
+		return map;
+	}
+
 	
 }
