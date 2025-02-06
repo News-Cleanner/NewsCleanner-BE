@@ -13,7 +13,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User signUp(User user) {
 		
-		user = userRep.save(user);
+		User savedUser = userRep.save(user);
+		return savedUser;
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		User user = userRep.findByEmail(email);
 		return user;
 	}
 
