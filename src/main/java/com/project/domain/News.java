@@ -38,4 +38,9 @@ public class News {
 	@Column(length = 1000)
 	private String context;
 	
+	public News(User user, String context) {
+		this.user=user;
+		this.context=context;
+	}
+	
 }
