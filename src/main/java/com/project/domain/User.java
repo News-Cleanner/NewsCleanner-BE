@@ -1,5 +1,6 @@
 package com.project.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,12 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Getter
@@ -21,7 +17,6 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Builder
 public class User {
 	
@@ -31,9 +26,11 @@ public class User {
 	private int user_id;
 	
 	@Column(unique = true, length = 50)
+	@Schema(example="awa@naver.com", required = true)
 	private String email;
 	
 	@Column(length = 50)
+	@Schema(example="1234", required = true)
 	private String password;
 	
 	public User(String email, String password) {
