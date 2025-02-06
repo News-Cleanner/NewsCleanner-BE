@@ -1,5 +1,8 @@
 package com.project.domain;
 
+import com.project.dto.NewsRequestDTO;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,6 +44,10 @@ public class News {
 	public News(User user, String context) {
 		this.user=user;
 		this.context=context;
+	}
+	
+	public News(NewsRequestDTO dto) {
+		this.context=dto.getContext();
 	}
 	
 }
