@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,6 +25,7 @@ import lombok.ToString;
 @Table(name="likeits")
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class LikeIt {
 	
