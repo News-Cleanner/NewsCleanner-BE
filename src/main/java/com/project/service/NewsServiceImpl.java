@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.domain.LikeIt;
 import com.project.domain.News;
+import com.project.dto.NewsDTO;
 import com.project.repository.LikeItRepository;
 import com.project.repository.NewsRepository;
 
@@ -21,9 +22,10 @@ public class NewsServiceImpl implements NewsService {
 	LikeItRepository likeItRep;
 
 	@Override
-	public News uploadNews(News news, LikeIt likeIt) {
+	public NewsDTO uploadNews(News news, LikeIt likeIt) {
 		news.setLikeIt(likeIt);
-		return newsRep.save(news);
+		News dbNews=newsRep.save(news);
+		return new NewsDTO(dbNews);
 	}
 	
 	

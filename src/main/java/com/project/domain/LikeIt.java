@@ -1,6 +1,6 @@
 package com.project.domain;
 
-import com.project.dto.NewsRequestDTO;
+import com.project.dto.NewsDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
@@ -52,7 +52,7 @@ public class LikeIt {
 	@OneToOne
 	private News news;
 	
-	public LikeIt(NewsRequestDTO dto) {
+	public LikeIt(NewsDTO dto) {
 		this.useful=dto.getUseful();
 		this.wow=dto.getWow();
 		this.toched=dto.getToched();

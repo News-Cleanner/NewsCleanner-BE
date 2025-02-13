@@ -1,5 +1,6 @@
 package com.project.dto;
 import com.project.domain.LikeIt;
+import com.project.domain.News;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
@@ -9,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NewsRequestDTO {
+public class NewsDTO {
 	private int news_id;
 	
 	@Schema(example="크롬·엣지·파이어폭스, 개인정보위와 자동로그인 보안 개선키로")
@@ -39,4 +40,18 @@ public class NewsRequestDTO {
 	
 	@Schema(example="5")
 	private int recommend;
+	
+	public NewsDTO(News news) {
+		this.news_id=news.getNewsId();
+		this.title=news.getTitle();
+		this.context=news.getContext();
+		this.mediaCompany=news.getMediaCompany();
+		this.reporter=news.getReporter();
+		LikeIt likeIt=news.getLikeIt();
+		this.useful=likeIt.getUseful();
+		this.wow=likeIt.getWow();
+		this.toched=likeIt.getToched();
+		this.analtical=likeIt.getAnaltical();
+		this.recommend=likeIt.getRecommend();
+	}
 }

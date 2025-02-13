@@ -1,6 +1,6 @@
 package com.project.domain;
 
-import com.project.dto.NewsRequestDTO;
+import com.project.dto.NewsDTO;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -65,7 +65,7 @@ public class News {
 		this.context=context;
 	}
 	
-	public News(NewsRequestDTO dto) {
+	public News(NewsDTO dto) {
 		this.title=dto.getTitle();
 		this.context=dto.getContext();
 		this.mediaCompany=dto.getMediaCompany();
