@@ -6,4 +6,6 @@ import com.project.dto.NewsDTO;
 
 public interface NewsService {
 	NewsDTO uploadNews(News news, LikeIt likeit);
+	
+	NewsDTO fetchNews(String url);
 }

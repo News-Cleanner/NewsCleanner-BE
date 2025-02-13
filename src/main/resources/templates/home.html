@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fake News Detector</title>
     <style>
@@ -89,10 +90,10 @@
     </header>
 
     <main>
-        <h1>아래에 뉴스 기사나 헤드라인을 붙여넣어 진위 여부를 확인하세요.</h1>
+        <h1>뉴스 링크를 넣어 진위 여부를 확인하세요.</h1>
 
         <div class="input-section">
-            <textarea id="newsInput" placeholder="뉴스 기사나 헤드라인을 붙여넣어주세요"></textarea>
+            <textarea id="newsUrl" placeholder="뉴스 링크를 붙여넣어주세요!"></textarea>
             <button onclick="analyzeNews()">진위 확인하기</button>
         </div>
 
@@ -106,26 +107,43 @@
         function analyzeNews() {
             const resultSection = document.getElementById('resultSection');
             const resultMessage = document.getElementById('resultMessage');
-            const newsInput = document.getElementById('newsInput').value;
+            let newsUrl = $("#newsUrl").val();
 
-            if (!newsInput.trim()) {
-                alert('Please enter some text to analyze!');
+            if (!newsUrl.trim()) {
+                alert('링크를 넣어주세요!');
                 return;
             }
+            
+            $.ajax({
+                type: "POST",
+                url: "/news-upload",
+                contentType: "application/json",
+                data: JSON.stringify({ url: newsUrl }),
+                success: function(response) {
+                   let message="[네이버 뉴스] \n\n"
+                   message+="기자: " + response.reporter + "\n";
+                   message+="언론사: " + response.press + "\n\n";
+                   message+="기사 내용:\n" + response.content.substring(0, 200) + "...\n\n"; // 기사 내용 일부만 표시
+                   alert(message);
+                },
+                error: function() {
+                    alert("뉴스 데이터를 가져오는 데 실패했습니다.");
+                }
+            });
 
             // Simulate loading state
             resultSection.style.display = 'block';
             resultMessage.textContent = 'Analyzing...';
 
             // Simulate API call
-            setTimeout(() => {
+            /* setTimeout(() => {
                 const isFake = Math.random() > 0.5; // Mock result
                 if (isFake) {
                     resultMessage.textContent = 'This article is likely fake. Please verify the source.';
                 } else {
                     resultMessage.textContent = 'This article seems authentic. Still, cross-check the facts.';
                 }
-            }, 2000);
+            }, 2000); */
         }
     </script>
 </body>
