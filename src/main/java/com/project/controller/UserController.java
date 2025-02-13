@@ -62,7 +62,7 @@ public class UserController {
 		
 		//보내줄 유저정보 다시 세팅
 		HashMap<String, Object> users = new LinkedHashMap<String, Object>();
-		users.put("userSeq", dbUser.getUser_id());
+		users.put("userSeq", dbUser.getUserId());
 
 		//response할 객체 생성
 		HashMap<String, Object> map = new HashMap<String, Object>();

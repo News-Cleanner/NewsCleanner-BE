@@ -1,5 +1,6 @@
 package com.project.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,9 +29,10 @@ public class Result {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "result_id_gen")
 	@SequenceGenerator(name = "result_id_gen", allocationSize = 1, sequenceName = "result_id_gen")
-	private int result_id;
+	@Column(name = "result_id")
+	private int resultId;
 	
-	@JoinColumn(name="news_id")
+	@JoinColumn(name="newsId")
 	@OneToOne
 	private News news;
 	

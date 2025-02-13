@@ -32,9 +32,10 @@ public class News {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "news_id_gen")
 	@SequenceGenerator(name = "news_id_gen", allocationSize = 1, sequenceName = "news_id_gen")
-	private int news_id;
+	@Column(name="news_id")
+	private int newsId;
 	
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="userId")
 	@ManyToOne
 	private User user;
 	

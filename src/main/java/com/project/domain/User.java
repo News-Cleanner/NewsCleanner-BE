@@ -23,7 +23,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_gen")
 	@SequenceGenerator(name = "user_id_gen", allocationSize = 1, sequenceName = "user_id_gen")
-	private int user_id;
+	@Column(name="user_id")
+	private int userId;
 	
 	@Column(unique = true, length = 50)
 	@Schema(example="awa@naver.com", required = true)
