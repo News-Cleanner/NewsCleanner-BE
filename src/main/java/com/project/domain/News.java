@@ -39,8 +39,17 @@ public class News {
 	@ManyToOne
 	private User user;
 	
+	@Column(length = 20)
+	private String title;
+	
 	@Column(length = 1000)
 	private String context;
+	
+	@Column(length = 20)
+	private String mediaCompany;
+	
+	@Column(length = 10)
+	private String reporter;
 	
 	public News(User user, String context) {
 		this.user=user;
