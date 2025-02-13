@@ -5,11 +5,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.domain.LikeIt;
 import com.project.domain.News;
 import com.project.domain.User;
 import com.project.dto.NewsRequestDTO;
 import com.project.service.NewsService;
 
+import io.swagger.v3.oas.annotations.media.Content;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -25,7 +27,10 @@ public class NewsController {
 		News news=new News(dto);
 		news.setUser((User)session.getAttribute("loginUser"));
 		
-		News dbNews=newsService.uploadNews(news);
+		LikeIt likeIt=new LikeIt(dto);
+		likeIt.setNews(news);
+		
+		News dbNews=newsService.uploadNews(news, likeIt);
 		return dbNews;
 	}
 	
