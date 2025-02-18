@@ -1,4 +1,6 @@
 package com.project.dto;
+import java.util.List;
+
 import com.project.domain.LikeIt;
 import com.project.domain.News;
 
@@ -42,13 +44,14 @@ public class NewsDTO {
 	private int recommend;
 	
 	
-	public NewsDTO(int[] reactions) {
-		this.useful=reactions[0];
-		this.wow=reactions[1];
-		this.toched=reactions[2];
-		this.analtical=reactions[3];
-		this.recommend=reactions[4];
+	public NewsDTO(List<Integer> reactions) {
+		this.useful=reactions.get(0);
+		this.wow=reactions.get(1);
+		this.toched=reactions.get(2);
+		this.analtical=reactions.get(3);
+		this.recommend=reactions.get(4);
 	}
+	
 	public NewsDTO(News news) {
 		this.news_id=news.getNewsId();
 		this.title=news.getTitle();

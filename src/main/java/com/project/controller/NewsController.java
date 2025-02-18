@@ -11,6 +11,7 @@ import com.project.domain.User;
 import com.project.dto.NewsDTO;
 import com.project.dto.RequestDTO;
 import com.project.service.NewsService;
+import com.project.util.NewsScrapper;
 
 import io.swagger.v3.oas.annotations.media.Content;
 import jakarta.servlet.http.HttpSession;
@@ -21,12 +22,15 @@ public class NewsController {
 	@Autowired
 	NewsService newsService;
 	
+	@Autowired
+	NewsScrapper newsScrapper;
+	
 	@PostMapping("/news-upload")
 	public NewsDTO uploadNews(@RequestBody RequestDTO request, HttpSession session) {
 		
 		// 뉴스 정보 담기
 		String url=request.getUrl();
-		NewsDTO dto=newsService.fetchNews(url);
+		NewsDTO dto=newsScrapper.scrape(url);
 		
 		// 뉴스 정보들로 객체 생성
 		News news=new News(dto);

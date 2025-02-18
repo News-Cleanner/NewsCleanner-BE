@@ -40,16 +40,16 @@ public class News {
 	@ManyToOne
 	private User user;
 	
-	@Column(length = 100)
+	@Column(length = 500)
 	private String title;
 	
 	@Column(length = 10000)
 	private String content;
 	
-	@Column(length = 20)
+	@Column(length = 100)
 	private String press;
 	
-	@Column(length = 10)
+	@Column(length = 100)
 	private String reporter;
 	
 	@OneToOne(mappedBy = "news", cascade = CascadeType.ALL)
