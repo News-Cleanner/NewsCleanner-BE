@@ -44,5 +44,8 @@ out/
 Thumbs.db
 desktop.ini
 
-.chromedriver.exe
-
+## ChromeDriver ##
+chromedriver
+chromedriver.exe
+chromedriver_linux64/
+chromedriver_mac64/
