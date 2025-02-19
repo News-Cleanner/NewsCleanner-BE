@@ -43,3 +43,5 @@ out/
 ### Windows ###
 Thumbs.db
 desktop.ini
+
+chromedriver
