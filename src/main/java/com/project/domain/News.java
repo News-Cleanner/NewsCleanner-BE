@@ -40,16 +40,16 @@ public class News {
 	@ManyToOne
 	private User user;
 	
-	@Column(length = 100)
+	@Column(length = 500)
 	private String title;
 	
-	@Column(length = 1000)
-	private String context;
+	@Column(length = 10000)
+	private String content;
 	
-	@Column(length = 20)
-	private String mediaCompany;
+	@Column(length = 100)
+	private String press;
 	
-	@Column(length = 10)
+	@Column(length = 100)
 	private String reporter;
 	
 	@OneToOne(mappedBy = "news", cascade = CascadeType.ALL)
@@ -60,15 +60,15 @@ public class News {
 		likeIt.setNews(this);
 	}
 	
-	public News(User user, String context) {
+	public News(User user, String content) {
 		this.user=user;
-		this.context=context;
+		this.content=content;
 	}
 	
 	public News(NewsDTO dto) {
 		this.title=dto.getTitle();
-		this.context=dto.getContext();
-		this.mediaCompany=dto.getMediaCompany();
+		this.content=dto.getContent();
+		this.press=dto.getPress();
 		this.reporter=dto.getReporter();
 	}
 	

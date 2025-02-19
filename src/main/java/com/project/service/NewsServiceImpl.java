@@ -8,6 +8,7 @@ import com.project.domain.News;
 import com.project.dto.NewsDTO;
 import com.project.repository.LikeItRepository;
 import com.project.repository.NewsRepository;
+import com.project.util.NewsScrapper;
 
 import jakarta.transaction.Transactional;
 
@@ -20,6 +21,9 @@ public class NewsServiceImpl implements NewsService {
 	
 	@Autowired
 	LikeItRepository likeItRep;
+	
+	@Autowired
+	NewsScrapper newsScrapper;
 
 	@Override
 	public NewsDTO uploadNews(News news, LikeIt likeIt) {
@@ -27,7 +31,4 @@ public class NewsServiceImpl implements NewsService {
 		News dbNews=newsRep.save(news);
 		return new NewsDTO(dbNews);
 	}
-	
-	
-
 }

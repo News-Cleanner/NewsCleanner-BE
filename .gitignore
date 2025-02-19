@@ -43,3 +43,9 @@ out/
 ### Windows ###
 Thumbs.db
 desktop.ini
+
+## ChromeDriver ##
+chromedriver
+chromedriver.exe
+chromedriver_linux64/
+chromedriver_mac64/
