@@ -44,4 +44,5 @@ out/
 Thumbs.db
 desktop.ini
 
-chromedriver
+.chromedriver.exe
+
